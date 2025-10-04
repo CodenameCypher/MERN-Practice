@@ -40,6 +40,7 @@ const createWorkout = (request, response) => {
   workoutModel
     .create({ title, load, reps })
     .then((result) => {
+      console.log(result);
       response.status(200).json(result);
     })
     .catch((error) => {
@@ -55,7 +56,7 @@ const deleteWorkout = (request, response) => {
     .findByIdAndDelete(id)
     .then((result) => {
       result
-        ? response.status(200).json({ ErrorMsg: "Success!" })
+        ? response.status(200).json(result)
         : response
             .status(404)
             .json({ ErrorMsg: "Database Error: No such workout found." });
